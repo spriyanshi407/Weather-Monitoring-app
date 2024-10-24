@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+    <title>Weather Monitoring App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Monitoring App</h1>
+        <form method="post" action="{{ url_for('get_weather') }}" class="weather-form">
+            <div class="form-group">
+                <label for="city">Select City:</label>
+                <select name="city" id="city" required>
+                    {% for city in city_ids %}
+                        <option value="{{ city }}" {% if selected_city == city %}selected{% endif %}>
+                            {{ city }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="temp_unit">Select Temperature Unit:</label>
+                <select name="temp_unit" id="temp_unit">
+                    <option value="Celsius" {% if temp_unit == 'Celsius' %}selected{% endif %}>Celsius</option>
+                    <option value="Fahrenheit" {% if temp_unit == 'Fahrenheit' %}selected{% endif %}>Fahrenheit</option>
+                </select>
+            </div>
+
+            <button type="submit">Get Weather</button>
+        </form> 
+        <div class="button-container">
+            <button id="dark-mode-button" class="toggle-button" aria-label="Toggle Dark Mode">🌙 Dark Mode</button>
+            <button id="voice-search-button" class="toggle-button" aria-label="Start Voice Search">🎤 Voice Search</button>
+        </div>        
+        
+        {% if weather_data and weather_data.get(selected_city) %}
+            <div class="weather-info">
+                <h2>Current Weather in {{ selected_city }}</h2>
+                <i class="wi {{ weather_icon_map.get(weather_data[selected_city]['condition'], 'wi-na') }}"></i>
+                <p>Main Condition: <strong>{{ weather_data[selected_city]['condition'] }}</strong></p>
+                <p>Temperature: {{ weather_data[selected_city]['temp'] }} °{{ temp_unit }}</p> <!-- Adjusted -->
+                <p>Feels Like: {{ weather_data[selected_city]['feels_like'] }} °{{ temp_unit }}</p> <!-- Adjusted -->
+                <p>Humidity: {{ weather_data[selected_city]['humidity'] }}%</p>
+                <p>Wind Speed: {{ weather_data[selected_city]['wind_speed'] }} m/s</p>
+                <p>Last Updated: {{ weather_data[selected_city]['timestamp'] }}</p>
+            </div>
+        {% else %}
+            <p>No weather data available for the selected city.</p>
+        {% endif %}
+
+        {% if daily_summaries %}
+            <div class="daily-summaries">
+                <h2>Daily Summaries</h2>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>City</th>
+                        <th>Avg Temp (°C)</th>
+                        <th>Max Temp (°C)</th>
+                        <th>Min Temp (°C)</th>
+                        <th>Condition</th>
+                        <th>Avg Humidity (%)</th>
+                        <th>Avg Wind Speed (m/s)</th>
+                    </tr>
+                    {% for summary in daily_summaries %}
+                    <tr>
+                        <td>{{ summary.date }}</td>
+                        <td>{{ summary.city }}</td>
+                        <td>{{ summary.avg_temp }}</td>
+                        <td>{{ summary.max_temp }}</td>
+                        <td>{{ summary.min_temp }}</td>
+                        <td>{{ summary.dominant_condition }}</td>
+                        <td>{{ summary.avg_humidity }}</td>
+                        <td>{{ summary.avg_wind_speed }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+
+        <form method="post" action="{{ url_for('set_alert') }}" class="alert-form">
+            <label for="temp_threshold">Temperature Threshold (°C):</label>
+            <input type="number" name="temp_threshold" required>
+
+            <label for="weather_condition">Weather Condition:</label>
+            <select name="weather_condition">
+                <option value="Rain">Rain</option>
+                <option value="Clouds">Clouds</option>
+                <option value="Clear">Clear</option>
+                <option value="Thunderstorm">Thunderstorm</option>
+            </select>
+
+            <button type="submit">Set Alert</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                <li>{{ message }}</li> <!-- Corrected here -->
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

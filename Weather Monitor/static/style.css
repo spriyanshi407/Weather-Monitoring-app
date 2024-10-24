@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: url('/static/pexels-pixabay-531756.jpg');
+    background-size: cover;
+    color: #060606;
+    height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 5px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-align: center;
+}
+
+form {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+form label {
+    margin-right: 10px;
+}
+
+form select, form input[type="number"] {
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+    background-color: #f8f9fa;
+}
+
+form button, #voice-search-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+form button:hover, #voice-search-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.weather-info {
+    background: linear-gradient(rgba(169, 169, 169, 0.7), rgba(0, 191, 255, 0.7)), url('/static/pexels-pixabay-531756.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    color: white;
+}
+
+.weather-info h2 {
+    color: #007bff;
+}
+
+.weather-info:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.daily-summaries {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.flashes {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.flashes li {
+    background-color: #f8d7da;
+    color: #721c24;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s; 
+    border-left: 5px solid #dc3545;
+    padding-left: 15px;
+}
+
+.flashes li:hover {
+    background-color: #f5c6cb;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #6c757d;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add transition effects for elements */
+.container, .weather-info, form, footer {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    form {
+        flex-direction: column; 
+    }
+
+    form label {
+        margin-bottom: 5px;
+    }
+
+    form button {
+        width: 100%; 
+    }
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+.dark-mode .container {
+    background-color: rgba(30, 30, 30, 0.9);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode button {
+    background-color: #4fc3f7;
+    color: black;
+}
+
+/* Tab Styles */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px 5px 0 0;
+    margin-right: 5px;
+}
+
+.tab-button:hover {
+    background-color: #0056b3;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 0 5px 5px 5px;
+    background-color: white;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Chart Styling */
+canvas {
+    max-width: 100%;
+    height: 400px;
+}
+.weather-background {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    z-index: -1; 
+    transition: background 0.5s ease; 
+}
+
+.button-container {
+    position: absolute; 
+    top: 20px; 
+    right: 20px;
+}
+
+.toggle-button {
+    background-color: #f0f0f0; 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3; 
+}
+
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column; 
+        align-items: center;    
+    }
+}
