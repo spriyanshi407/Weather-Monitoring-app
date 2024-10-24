@@ -1,7 +1,7 @@
 import os
 import secrets
 
-OPENWEATHER_API_KEY = '6df3edf64b68c14057281630d98ebf88'  # Replace with your actual API key
+OPENWEATHER_API_KEY = 'YOUR_API_KEY'  # Replace with your actual API key
 API_URL = "https://api.openweathermap.org/data/2.5"
 SECRET_KEY = os.environ.get('FLASK_SECRET_KEY', secrets.token_hex(16))
 
