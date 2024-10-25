@@ -35,12 +35,13 @@ To run the application locally, follow these steps:
 
 1. **Clone the repository**:
   - git clone https://github.com/yourusername/weather-monitoring-app.git
-  - cd weather-monitoring-app
+  - cd "Weather Monitor"
 2. **Set up a virtual environment (optional but recommended):**
   - python -m venv venv
   - venv\Scripts\activate
 3. **Install the required dependencies:**
-  - pip install -r requirements.txt
+  - pip install Flask==2.3.2
+  - pip install flask requests
 4. **Set up your API key:**
    Create a file named config.py and add your OpenWeatherMap API key:
   - API_KEY = 'your_openweathermap_api_key'
