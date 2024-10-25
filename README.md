@@ -51,21 +51,21 @@ To run the application locally, follow these steps:
 6. **Open your web browser** and navigate to http://127.0.0.1:5000.
 
 ## Usage
-**City Selection**:  Choose a city from the dropdown menu.
-**Temperature Unit**":  Select your preferred temperature unit (Celsius or Fahrenheit).
-**Get Weather**:  Click the "Get Weather" button to fetch and display the current weather conditions.
-**Set Alerts**:  Use the alert form to set temperature thresholds and select weather conditions for alerts.
-**Explore Daily Summaries**: Access daily weather summaries to view aggregated data.
-**Toggle Dark Mode**:  Click the dark mode button to switch themes.
+- **City Selection**:  Choose a city from the dropdown menu.
+- **Temperature Unit**":  Select your preferred temperature unit (Celsius or Fahrenheit).
+- **Get Weather**:  Click the "Get Weather" button to fetch and display the current weather conditions.
+- **Set Alerts**:  Use the alert form to set temperature thresholds and select weather conditions for alerts.
+- **Explore Daily Summaries**: Access daily weather summaries to view aggregated data.
+- **Toggle Dark Mode**:  Click the dark mode button to switch themes.
 
 ## Future Enhancements
 The following features are planned for future updates:
 
-**User Authentication**: Allow users to create accounts and save their preferences and alert settings.
-**Enhanced Forecasting**: Integration with additional weather APIs for more accurate forecasting.
-**Additional Weather Parameters**: Expand the application to display more weather metrics like UV index, visibility, etc.
-**Mobile App Version**: Development of a mobile application for better accessibility.
-**Interactive Maps**: Integration of interactive maps to visualize weather data geographically.
+1. **User Authentication**: Allow users to create accounts and save their preferences and alert settings.
+2. **Enhanced Forecasting**: Integration with additional weather APIs for more accurate forecasting.
+3. **Additional Weather Parameters**: Expand the application to display more weather metrics like UV index, visibility, etc.
+4. **Mobile App Version**: Development of a mobile application for better accessibility.
+5. **Interactive Maps**: Integration of interactive maps to visualize weather data geographically.
 
 ## Contribution
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
