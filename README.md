@@ -46,6 +46,7 @@ To run the application locally, follow these steps:
    Create a file named config.py and add your OpenWeatherMap API key:
   - API_KEY = 'your_openweathermap_api_key'
 5. **Run the application:**
+  - Now right click on app.py file and click on open in integrated terminal
   - python app.py
 6. **Open your web browser** and navigate to http://127.0.0.1:5000.
 
